@@ -34,6 +34,7 @@ def thread_clients(client_connection, client_address):
     print(f"Пользователь {name} отключился")
 
 
+
 while True:
     client_connection, client_address = server_socket.accept()
     ## создаем новый поток в котором будет выполняться функция передаем функции 2 аругмента и запуск потока

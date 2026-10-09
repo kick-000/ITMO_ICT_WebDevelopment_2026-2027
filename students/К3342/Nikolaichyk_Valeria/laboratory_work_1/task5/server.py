@@ -1,12 +1,12 @@
 import socket
 from urllib.parse import unquote
-
+"http://localhost:8800/"
 grades = {}
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
-server_socket.bind(("localhost", 8000))
+server_socket.bind(("localhost", 8800))
 server_socket.listen(5)
 print("Сервер запущен на порту 8000...")
 
@@ -43,8 +43,9 @@ while True:
     client_connection, client_address = server_socket.accept()
     print(f"Подключился клиент: {client_address}")
 
-    request = client_connection.recv(4096).decode()
+    request = client_connection.recv(4096).decode("utf-8")
     print("HTTP-запрос:")
+    print(request)
 
     first_line = request.split("\r\n")[0]
     method, path, version = first_line.split()
